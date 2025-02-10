@@ -1,0 +1,192 @@
+<div class="text-center inner_content">
+    <h2 class="inner_header">
+        <img src="/upload/asset/icons/exp_coupon.png"> <img src="/upload/asset/icons/upper_exp_coupon.png"> EXP 쿠폰 계산기
+        <div>
+            <span class="badge rounded-pill bg-secondary text-white" style="font-size: 10px;">#EXP쿠폰</span>
+            <span class="badge rounded-pill bg-secondary text-white" style="font-size: 10px;">#상급 EXP쿠폰</span>
+            <span class="badge rounded-pill bg-secondary text-white" style="font-size: 10px;">#본캐</span>
+            <span class="badge rounded-pill bg-secondary text-white" style="font-size: 10px;">#부캐</span>
+            <span class="badge rounded-pill bg-secondary text-white" style="font-size: 10px;">#유니온</span>
+            <span class="badge rounded-pill bg-secondary text-white" style="font-size: 10px;">#경험치쿠폰</span>
+        </div>
+    </h2>
+    <div class="inner_ads_box overflow-hidden" align="center">
+        <ins class="adsbygoogle" style="display:inline-block;max-width:1200px;width:100%;height:90px"
+            data-ad-client="ca-pub-2246269595997260" data-ad-slot="3603926790"></ins>
+    </div>
+    <div class="row">
+        <div class="col-lg-6 d-grid">
+            <div class="inner_content_box">
+                <form id="frm_exp_calculator" class="h-100 d-grid">
+                    <table class="inner_table w-100">
+                        <tbody>
+                            <tr>
+                                <th style="line-height: 18px;">닉네임검색<br>
+                                    <div class="badge rounded-pill text-bg-info text-white" style="font-size: 10px;">API
+                                    </div>
+                                </th>
+                                <td>
+                                    <div class="input-group">
+                                        <input type="text" name="character_name" id="character_name"
+                                            class="form-control" placeholder="닉네임 입력 후 엔터!">
+                                        <input type="button" class="btn_cyan" onclick="fSearchInfo()" value="검색">
+                                    </div>
+                                    <div class="badge rounded-pill bg_partners" id="character_info"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>레벨<span class="text-danger">*</span></th>
+                                <td><input type="text" name="level" id="before_level" class="form-control"
+                                        placeholder="레벨을 입력하세요."></td>
+                            </tr>
+                            <tr>
+                                <th>경험치 (%)</th>
+                                <td>
+                                    <div class="input-group">
+                                        <input type="text" name="exp" id="before_exp" class="form-control"
+                                            placeholder="0">
+                                        <span class="input-group-text">%</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>하이퍼버닝</th>
+                                <td>
+                                    <div class="form-check form-switch">
+                                        <input name="hyper" class="form-check-input chk_burning" type="checkbox"
+                                            value="1" role="switch" data-bs-toggle="tooltip" data-bs-html="true"
+                                            data-bs-custom-class="custom-tooltip"
+                                            data-bs-title="<span class='custom_tooltip'>하이퍼버닝 MAX 지정 캐릭터일 경우 체크</span>">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>쿠폰 종류<span class="text-danger">*</span></th>
+                                <td>
+                                    <div class="d-flex btn_group">
+                                        <div class="chk_button">
+                                            <label data-bs-toggle="tooltip" data-bs-html="true"
+                                                data-bs-custom-class="custom-tooltip"
+                                                data-bs-title="<span class='custom_tooltip'>200레벨 이상 사용 가능</span>">
+                                                <input type="radio" name="coupon_type" value="exp" checked=""><span
+                                                    class="py-2 h-100"><img src="/upload/asset/icons/exp_coupon.png"
+                                                        style="width:30px"> EXP 쿠폰</span>
+                                            </label>
+                                        </div>
+                                        <div class="chk_button">
+                                            <label data-bs-toggle="tooltip" data-bs-html="true"
+                                                data-bs-custom-class="custom-tooltip"
+                                                data-bs-title="<span class='custom_tooltip'>260레벨 이상 사용 가능</span>">
+                                                <input type="radio" name="coupon_type" value="upper_exp"><span
+                                                    class="py-2 h-100"><img
+                                                        src="/upload/asset/icons/upper_exp_coupon.png"
+                                                        style="width:30px"> 상급 EXP 쿠폰</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>계산 타입<span class="text-danger">*</span></th>
+                                <td>
+                                    <div class="d-flex btn_group">
+                                        <div class="chk_button">
+                                            <label data-bs-toggle="tooltip" data-bs-html="true"
+                                                data-bs-custom-class="custom-tooltip"
+                                                data-bs-title="<span class='custom_tooltip'>목표 레벨을 기준으로 EXP 쿠폰 사용량 및 획득 경험치를 계산합니다.</span>">
+                                                <input type="radio" name="type" id="option1" value="level"
+                                                    checked=""><span class="py-2 h-100">목표 레벨</span>
+                                            </label>
+                                        </div>
+                                        <div class="chk_button">
+                                            <label data-bs-toggle="tooltip" data-bs-html="true"
+                                                data-bs-custom-class="custom-tooltip"
+                                                data-bs-title="<span class='custom_tooltip'>EXP 쿠폰 사용 개수를 기준으로 획득 경험치를 계산합니다.</span>">
+                                                <input type="radio" name="type" id="option2" value="coupon"><span
+                                                    class="py-2 h-100">쿠폰 개수</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr id="tr_level">
+                                <th>목표 레벨<span class="text-danger">*</span></th>
+                                <td><input name="target_level" type="text" class="form-control" placeholder="0"></td>
+                            </tr>
+                            <tr id="tr_coupon" style="display: none;">
+                                <th>쿠폰 개수<span class="text-danger">*</span></th>
+                                <td><input name="coupon_count" type="text" class="form-control" placeholder="0"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <button class="btn_cyan btn_large fs-1 w-100 align-self-end mt-3" type="button"
+                        onclick="fCalculate()">계산하기</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-lg-6 d-grid">
+            <div class="inner_content_box">
+                <div class="inner_title">계산 결과</div>
+                <div id="result">
+                    <table class="inner_table w-100" id="result_table">
+                        <tbody>
+                            <tr>
+                                <th>사용 된 EXP 쿠폰</th>
+                                <td><b id="result_coupon" class="text_cyan">0</b>개</td>
+                            </tr>
+                            <tr>
+                                <th>획득 경험치</th>
+                                <td><b id="gain_exp" class="text_cyan">0</b><br>(<span id="gain_exp_per"
+                                        class="text_purple">0</span>%)</td>
+                            </tr>
+                            <tr>
+                                <th>달성 레벨</th>
+                                <td><b class="result_level text_green">0</b> (<span id="result_exp_per"
+                                        class="text_purple">0</span>%)</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <div id="result_level_up" class="text_yellow" style="display: none;">레벨 업! (<span
+                                            id="result_before_level"></span> ⇒ <span class="result_level"></span>)</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="p-2 mt-5">
+                        <table class="w-100" id="result_elixir">
+                            <tbody>
+                                <tr>
+                                    <th colspan="2">성장의 비약 효율 계산 결과</th>
+                                </tr>
+                                <tr>
+                                    <th>200~209 비약</th>
+                                    <td id="e209"></td>
+                                </tr>
+                                <tr>
+                                    <th>210~219 비약</th>
+                                    <td id="e219"></td>
+                                </tr>
+                                <tr>
+                                    <th>220~229 비약</th>
+                                    <td id="e229"></td>
+                                </tr>
+                                <tr>
+                                    <th>태풍 성장의 비약<sub>(~239)</sub></th>
+                                    <td id="e239"></td>
+                                </tr>
+                                <tr>
+                                    <th>극한 성장의 비약<sub>(~249)</sub></th>
+                                    <td id="e249"></td>
+                                </tr>
+                                <tr>
+                                    <th>초월 성장의 비약<sub>(~269)</sub></th>
+                                    <td id="e269"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
